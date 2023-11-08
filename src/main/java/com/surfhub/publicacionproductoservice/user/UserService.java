@@ -31,12 +31,14 @@ public class UserService {
     }
 
     public Optional<User> findByEmail(String email) {
+        System.out.println("dentro de findbyemail********");
         User user = User.builder()
                 .email(email)
                 .role(Role.USER)
                 .build();
         System.out.println("usuario a enviar" + user);
-        String authHeader = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYW5pZWxtb250ZWxsYW5vc2xsYW1vY2FAZ21haWwuY29tIiwiaWF0IjoxNjk4Njg3NDQyLCJleHAiOjE2OTg4MTQ4MDB9.HdIHsSUewfR8q4nfw8OqrOhp8lk4OWTZEkOv9tEPx3TvvwFSl0lVG8j-NdKxdFQtuf9IWU_FAcE1ABHstCI3_Q";
+        String authHeader = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYW5pZWxtb250ZWxsYW5vc2xsYW1vY2FAZ21haWwuY29tIiwiaWF0IjoxNjk5MDQxNzg1LCJleHAiOjE2OTkxNjA0MDB9.m5_emhx3Ik3G6ObAj8qq4TBjO6-tx15A46-GLrfK0w4kyEk830I70AZj05L21FZHbbOdOgh79NQheLDZeAjbQw";
         return userFeignClient.findUserByEmail(user, authHeader);
     }
 }
+
